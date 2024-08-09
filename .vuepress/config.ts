@@ -1,16 +1,21 @@
 import { defineConfig } from "vuepress/config";
+
 import navbar from "./navbar";
 import sidebar from "./sidebar";
 import footer from "./footer";
 import extraSideBar from "./extraSideBar";
+// import { katex } from "@mdit/plugin-katex";
 
-const author = "程序员鱼皮";
+import markdownItKatex from "markdown-it-katex";
+
+const author = "Leon Wang";
 const domain = "https://codefather.cn";
 const tags = ["Study", "Mathematics", "Computer"];
 
 
+
 export default defineConfig({
-  title: "Leon Wang",
+  title: "Notes",
   description: "Just a testing",
   head: [
     // 站点图标
@@ -38,7 +43,14 @@ export default defineConfig({
         })();
       `,
     ],
-  ],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css' }],      // 让md支持数学公式
+    ['link', { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" }],  // 让md支持数学公式
+    // ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css' }],
+    // ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap' }],
+    ],
   permalink: "/:slug",
 
   // 监听文件变化，热更新
@@ -48,6 +60,15 @@ export default defineConfig({
     lineNumbers: true,
     // 支持 4 级以上的标题渲染
     extractHeaders: ["h2", "h3", "h4", "h5", "h6"],
+    extendMarkdown: md => {
+      md.set({ breaks: true })
+      // 使用 markdown-it-katex 插件
+      md.use(markdownItKatex);
+      // 添加自定义的规则或类名（例如将所有公式包裹在一个 div 中）
+  //     md.renderer.rules.katex = (tokens, idx) => {
+  //       return `<div class="my-custom-katex">${tokens[idx].content}</div>`;
+  // };
+    },
   },
   // @ts-ignore
   plugins: [
@@ -98,7 +119,7 @@ export default defineConfig({
     [
       "vuepress-plugin-code-copy",
       {
-        successText: "代码已复制",
+        successText: "Code copied",
       },
     ],
     // https://github.com/webmasterish/vuepress-plugin-feed
@@ -113,26 +134,44 @@ export default defineConfig({
     ],
     // https://github.com/tolking/vuepress-plugin-img-lazy
     ["img-lazy"],
+    // latex interpreter
+    // ["markdown-it-mathjax3"],
+    // ["vuepress-plugin-katex"],
+    // ["@vuepress/plugin-katex"],
+    // ["vuepress-plugin-mathjax"], 
+    // ["vuepress-plugin-latex"], 
+    // [
+    //   "md-enhance",
+    //   {
+    //     // 启用 TeX 支持
+    //     tex: true,
+    //   },
+    // ],
   ],
   // 主题配置
   themeConfig: {
     logo: "/logo.png",
     nav: navbar,
     sidebar,
-    lastUpdated: "最近更新",
+    lastUpdated: "Last updated",
 
     // GitHub 仓库位置
-    repo: "liyupi/codefather",
-    docsBranch: "master",
+    // repo: "liyupi/codefather",
+    // docsBranch: "master",
 
     // 编辑链接
-    editLinks: true,
-    editLinkText: "完善页面",
+    // editLinks: true,
+    // editLinkText: "完善页面",
 
     // @ts-ignore
     // 底部版权信息
-    footer,
+    // footer,
     // 额外右侧边栏
-    extraSideBar,
+    // extraSideBar,
   },
+  // 额外配置
+  // extendMarkdown(md){  // 让md支持数学公式 npm install markdown-it-katex
+  //   md.set({html:true});
+  //   md.use(require('markdown-it-katex'))
+  // }
 });

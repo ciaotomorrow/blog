@@ -1,0 +1,89 @@
+/* 隐藏 h1, h2, h3, h4, h5, h6 标题前的锚点符号 */
+.content__default h1 .header-anchor,
+.content__default h2 .header-anchor,
+.content__default h3 .header-anchor,
+.content__default h4 .header-anchor,
+.content__default h5 .header-anchor,
+.content__default h6 .header-anchor {
+    display: none;
+}
+
+
+/* 修改 h1, h2, h3, h4, h5, h6 标题的颜色 */
+.content__default h1 {
+    color: #000000; /* 你想要的颜色 */
+}
+.content__default h2 {
+    color: #000000;
+}
+.content__default h3 {
+    color: #000000;
+}
+.content__default h4 {
+    color: #000000;
+}
+.content__default h5 {
+    color: #000000;
+}
+.content__default h6 {
+    color: #000000;
+}
+
+
+/* 修改url的颜色*/
+a {
+  color: #000000; /* 修改为你想要的颜色 */
+}
+
+
+.table-of-contents a {
+  color: #000000; /* 修改为你想要的颜色 */
+}
+
+/* 修改索引项的悬停颜色 */
+.table-of-contents a:hover {
+  color: #000000; /* 修改为你想要的悬停颜色 */
+}
+
+/* 修改主颜色 */
+:root {
+  --theme-color: #000000; /* 修改为你想要的主题颜色 */
+}
+
+/* 应用主题颜色 */
+.theme-default-content a {
+  color: var(--theme-color);
+}
+
+.theme-default-header {
+  background-color: var(--theme-color);
+}
+
+.theme-default-sidebar {
+  background-color: var(--theme-color);
+}
+
+
+
+/* 如果选中状态使用 .active 类 */
+.sidebar .active {
+  background-color: #ffffff; /* 修改为你想要的背景颜色 */
+  color: #000000; /* 修改为你想要的文字颜色 */
+}
+
+/* 如果选中状态的链接使用 .active 类 */
+.sidebar .active a {
+  color: #000000; /* 修改为你想要的链接颜色 */
+}
+
+
+
+/* .vuepress/styles/index.css 或 .vuepress/styles/index.styl 
+.katex {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.katex .mord, .katex .mop, .katex .mtext {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+*/
