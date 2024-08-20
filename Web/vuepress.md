@@ -1,5 +1,5 @@
 ---
-title: VuePress
+title: VuePress介绍
 sidebar: true
 tags:
     - Web
@@ -8,7 +8,7 @@ category:
     - HTML
     - Web
 ---
-# 
+# VuePress介绍
 ## 快速上手
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在开发一个不太熟悉的内容时，我认为最快的方法是找到一个相关的开源项目并运行它以查看效果。这个方法对于我来说是非常有效的。我使用的开源模板是[<span style="color: DodgerBlue;">template</span>](https://github.com/liyupi/codefather/tree/template). 关于这个模板的部分代码细节和操作过程，点击[<span style="color: DodgerBlue;">视频</span>](https://www.bilibili.com/video/BV1LQ4y1V79r/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=aae6d2f2986fbfc6933d738eccf70b4f)了解更多信息。
@@ -141,6 +141,58 @@ cd -
 在当前路径的终端执行以下命令，即可完成一键部署：
 ``` sh
 sh deploy.sh
+```
+
+### Github Action
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在[部署到Github Pages](#部署到github-pages)描述的部署方法中，我们将本地源文件编译成静态网页并存储到 `/dist/` 目录，然后将其推送到 GitHub 仓库，通常是一个相对简单的过程。然而，当文件较大、素材丰富时，每次在本地进行编译不仅耗时，还会占用额外的存储空间。
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幸运的是，GitHub 官方提供了一个强大的工具：GitHub Actions。借助它，我们可以将本地源文件上传到 GitHub 仓库的 `main` 分支，并自动将其编译为静态网页文件，部署到 `gh-pages` 分支（分支名称可以自定义）。这样，我们可以专注于内容创作，每次推送到远程仓库后，GitHub Actions 会自动处理后续工作。接下来，我们来看看如何使用 GitHub Actions 自动部署我们的博客。
+
+#### 1. 生成Token
+要部署 Actions，那么它就需要有能够操作我们仓库的权限，因此需要提前设置个人访问令牌（Github personal access）。
+#### 2. 设置Secrets
+在 Github 中存放源文件的仓库，进入 Settings, 在左侧边栏中找到 Secrets and variables, 点击 Actions, 新建一个 repository secret, 如下图所示：
+<figure>
+  <img src="/blog/cited-images/github_action1.png" alt="github_action." title="github_action." />
+</figure>
+将新建的 secret 命名为 ACCESS_TOKEN, 将上一步生成的 Token 复制到这里。
+
+#### 3. 编写 Action
+在 Github 中存放源文件的仓库，进入 Actions, 点击 New workflow, 进入 set up a workflow yourself, 编写`.yml`文件并存放到`main`分支。
+``` yml
+# name 可以自定义
+name: Deploy GitHub Pages
+
+# 触发条件：在 push 到 main/master 分支后，新的 Github 项目 应该都是 main，而之前的项目一般都是 master
+on:
+  push:
+    branches:
+      - main
+
+# 任务
+jobs:
+  build-and-deploy:
+    # 服务器环境：最新版 Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      # 生成静态文件
+      - name: Build
+        run: npm install && npm run docs:build
+
+      # 部署到 GitHub Pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
+          BRANCH: gh-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
+          FOLDER: .vuepress/dist # vuepress 生成的静态文件存放的地方
 ```
 ## 基本配置
 
