@@ -147,10 +147,11 @@ sh deploy.sh
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在[部署到Github Pages](#部署到github-pages)描述的部署方法中，我们将本地源文件编译成静态网页并存储到 `/dist/` 目录，然后将其推送到 GitHub 仓库，通常是一个相对简单的过程。然而，当文件较大、素材丰富时，每次在本地进行编译不仅耗时，还会占用额外的存储空间。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幸运的是，GitHub 官方提供了一个强大的工具：GitHub Actions。借助它，我们可以将本地源文件上传到 GitHub 仓库的 `main` 分支，并自动将其编译为静态网页文件，部署到 `gh-pages` 分支（分支名称可以自定义）。这样，我们可以专注于内容创作，每次推送到远程仓库后，GitHub Actions 会自动处理后续工作。接下来，我们来看看如何使用 GitHub Actions 自动部署我们的博客。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幸运的是，GitHub 官方提供了一个强大的工具：GitHub Actions。借助它，我们可以将本地源文件上传到 GitHub 仓库的 `main` 分支，并自动将其编译为静态网页文件，部署到 `gh-pages` 分支（分支名称可以自定义）。这样，我们可以专注于内容创作，每次推送到远程仓库后，GitHub Actions 会自动处理后续工作。接下来，我们来看看如何使用 GitHub Actions 自动部署我们的博客。参考：[<span style="color: DodgerBlue;">村雨遥</span>](https://cloud.tencent.com/developer/article/1956413).
 
 #### 1. 生成Token
 要部署 Actions，那么它就需要有能够操作我们仓库的权限，因此需要提前设置个人访问令牌（Github personal access）。
+
 #### 2. 设置Secrets
 在 Github 中存放源文件的仓库，进入 Settings, 在左侧边栏中找到 Secrets and variables, 点击 Actions, 新建一个 repository secret, 如下图所示：
 <figure>
