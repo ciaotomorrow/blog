@@ -109,7 +109,7 @@ export default {
 
     shouldShowPageSidebar (){
         const { frontmatter } = this.$page
-
+        
         return (//false&&
             !frontmatter.home
             && frontmatter.sidebar !== false

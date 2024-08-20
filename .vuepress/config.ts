@@ -1,32 +1,38 @@
 import { defineConfig } from "vuepress/config";
 
-import navbar from "./navbar";
-import sidebar from "./sidebar";
+import {navbar_en, navbar_zh } from "./navbar";
+// import the sidebar for "english" version
+import sidebar_en from "./sidebar_en";
+// import the sidebar for "chinese" version
+import sidebar_zh from "./sidebar_zh";
+
 import footer from "./footer";
 import extraSideBar from "./extraSideBar";
 // import { katex } from "@mdit/plugin-katex";
 
 import markdownItKatex from "markdown-it-katex";
 
+import markdownIt from 'markdown-it';
+import markdownItContainer from 'markdown-it-container';
+
 const author = "Leon Wang";
-const domain = "https://codefather.cn";
+const domain = "https://github.com/ciaotomorrow/blog/";
 const tags = ["Study", "Mathematics", "Computer"];
 
 
 
 export default defineConfig({
-  title: "Notes",
-  description: "Just a testing",
+  base: "/blog/",
   head: [
     // 站点图标
-    ["link", { rel: "icon", href: "/favicon.ico" }],
+    ["link", { rel: "icon", href: "/favicon2.ico" }],
     // SEO
     [
       "meta",
       {
         name: "keywords",
         content:
-          "程序员鱼皮, 编程学习路线, 编程知识百科, Java, 编程导航, 前端, 开发, 编程分享, 项目, IT, 求职, 面经",
+          "望星空, Stargaze, 王怀瑾, Wanghuaijin, Wang Huaijin",
       },
     ],
     // 百度统计
@@ -77,7 +83,7 @@ export default defineConfig({
     [
       "@vuepress/google-analytics",
       {
-        ga: "GTM-WVS9HM6W", // 补充自己的谷歌分析 ID，比如 UA-00000000-0
+        ga: "G-QY734ZWXRJ", // 补充自己的谷歌分析 ID，比如 UA-00000000-0
       },
     ],
     ["@vuepress/medium-zoom"],
@@ -120,6 +126,7 @@ export default defineConfig({
       "vuepress-plugin-code-copy",
       {
         successText: "Code copied",
+        align: "left",
       },
     ],
     // https://github.com/webmasterish/vuepress-plugin-feed
@@ -134,6 +141,13 @@ export default defineConfig({
     ],
     // https://github.com/tolking/vuepress-plugin-img-lazy
     ["img-lazy"],
+    [
+      'vuepress-plugin-serve'
+    ],
+    ["vuepress-plugin-tooltip"],
+    // https://github.com/leo-buneev/vuepress-plugin-fulltext-search
+    ['fulltext-search'],
+    // ["@vuepress/plugin-vuepress"],
     // latex interpreter
     // ["markdown-it-mathjax3"],
     // ["vuepress-plugin-katex"],
@@ -147,12 +161,83 @@ export default defineConfig({
     //     tex: true,
     //   },
     // ],
+
+    ['@vuepress/plugin-mathjax', {
+      target: 'svg',  // 使用 SVG 渲染 MathJax
+      macros: {
+        // 可以在这里添加自定义宏
+      },
+      mathjaxOptions: {
+        tex: {
+          tags: 'all'  // 启用公式编号
+        },
+        options: {
+          // 其他 MathJax 配置选项
+        }
+      }
+    }],
+
+    // markdown文本加密：https://www.imaegoo.com/2020/vuepress-encrypt/
+    ['@oak-tree-house/vuepress-plugin-encrypt', {
+      contentTitle: 'Encrypted Content',
+      unencryptedText: 'This is an encryptable content.',
+      encryptedText: 'This part of content is encrypted. To view it, you need to enter the correct key in the input field below.',
+      decryptedText: 'The encrypted content is successfully decrypted and shown below.',
+      decryptButtonText: 'Decrypt',
+      decryptFailText: 'Failed to decrypt!',
+      unencryptedIcon: undefined,
+      encryptedIcon: undefined,
+      decryptedIcon: undefined
+    }],
+    // [
+    //   'vuepress-plugin-reading-time',
+    //   {
+    //     wordCount: text => {
+    //       // 中文字符统计（每个汉字算作一个字）
+    //       const chineseCharacters = text.match(/[\u4e00-\u9fa5]/g) || [];
+    //       // 非中文字符的统计（按照单词计算）
+    //       const nonChineseWords = text.match(/\b\w+\b/g) || [];
+
+    //       // 总字数 = 中文字符数 + 非中文单词数
+    //       return chineseCharacters.length + nonChineseWords.length;
+    //     },
+    //     // wordCount: true,  // 启用字数统计
+    //     // excludeCodeBlock: true,  // 排除代码块中的字数
+    //     wordPerminute: 200,
+    //   },
+    // ],
+
+    [
+      '@vuepress/plugin-search',
+      {
+        // 配置选项
+        searchMaxSuggestions: 10, // 最大搜索建议数量
+        indexContent: true,
+        getExtraFields: (page) => page.frontmatter.tags || [],
+      },
+    ],
+    ['demo-block', {
+      // 插件配置选项
+    }],
+    // ['vue-pdf'],
   ],
   // 主题配置
+  locales: {
+    '/': {
+      lang: 'en-US', // 英文
+      title: '',
+      description: 'Description in English'
+    },
+    '/zh/': {
+      lang: 'zh-CN', // 中文
+      title: '',
+      description: '中文描述'
+    }
+  },
   themeConfig: {
-    logo: "/logo.png",
-    nav: navbar,
-    sidebar,
+    logo: "/logo2.png",
+    // nav: navbar,
+    sidebar: false, // false为禁用首页的侧边栏
     lastUpdated: "Last updated",
 
     // GitHub 仓库位置
@@ -168,6 +253,26 @@ export default defineConfig({
     // footer,
     // 额外右侧边栏
     // extraSideBar,
+    locales: {
+      '/': {
+        selectText: 'Languages',
+        label: 'English',
+        ariaLabel: 'Languages',
+        editLinkText: 'Edit this page on GitHub',
+        lastUpdated: 'Last Updated',
+        nav: navbar_en,
+        sidebar: sidebar_en,
+      },
+      '/zh/': {
+        selectText: '选择语言',
+        label: '简体中文',
+        ariaLabel: '选择语言',
+        editLinkText: '在 GitHub 上编辑此页',
+        lastUpdated: '最后更新',
+        nav: navbar_zh,
+        sidebar: sidebar_zh,
+      }
+    }
   },
   // 额外配置
   // extendMarkdown(md){  // 让md支持数学公式 npm install markdown-it-katex
