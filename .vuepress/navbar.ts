@@ -3,9 +3,9 @@
 */
 import {NavItem} from "vuepress/config";
 
-export const navbar_en: NavItem[] = [
+export const navbar: NavItem[] = [
     {
-        text: "ALL",
+        text: "All",
         items:[
             {text: "Reading", link: "/Reading/"},
             {text: "Mathematics", link: '/Mathematics/'},
@@ -28,16 +28,3 @@ export const navbar_en: NavItem[] = [
 ] as NavItem[];
 
 
-
-export const navbar_zh: NavItem[] = [
-    {
-        text: "阅读",
-        link: '/zh/Reading/'
-    },
-    {
-        text: "数学",
-        link: '/zh/Mathematics/'
-    },
-] as NavItem[];
-
-export default navbar_en;

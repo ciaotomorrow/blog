@@ -2,6 +2,15 @@
      所有引用的 .md 文件，必须引用为 .html (名字相同)
 -->
 
+<script setup>
+import { onMounted } from 'vue'
+
+// 在页面加载时设置标签页栏的标题
+onMounted(() => {
+  document.title = "Stargaze" // 自定义网页标签栏标题
+})
+</script>
+
 <template>
     <div class="homepage-container">
       <!-- Header -->
@@ -25,18 +34,18 @@
             </li>
 
             <li class="dropdown" @click.stop="toggleDropdown">
-              <button class="dropdown-btn"><b>更多主题</b></button>
+              <button class="dropdown-btn"><b>主题</b></button>
             </li>
           </ul>
         </nav>
       </header>
       
     <div v-if="toggleToolsOpen" class ="dropdown-tools">
-        <h1>有用的工具</h1>
+        <h1>有用的工具链接:</h1>
         <li> <a href="https://dofsimulator.net/" target="_blank"> 景深模拟器 </a></li>
-        <li><router-link to="/Photography">摄影</router-link></li>
+        <!-- <li><router-link to="/Photography">摄影</router-link></li>
         <li><router-link to="/Mathematics">数学</router-link></li>
-        <li><router-link to="/Web">网页</router-link></li>
+        <li><router-link to="/Web">网页</router-link></li> -->
         
     </div>
 
@@ -331,8 +340,8 @@
     border-radius: 5px;
     padding: 10px;
     z-index: 10;
-    width: 200px;
-    height: 300px; /* 设置高度 */
+    max-width: 400px;
+    max-height: 800px; /* 设置高度 */
     top: 20px;
     right: calc(20px + 10vw);
     /* top: 0; */

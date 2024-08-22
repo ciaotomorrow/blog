@@ -1,12 +1,11 @@
 import { defineConfig } from "vuepress/config";
 
-import {navbar_en, navbar_zh } from "./navbar";
-// import the sidebar for "english" version
-import sidebar_en from "./sidebar_en";
-// import the sidebar for "chinese" version
-import sidebar_zh from "./sidebar_zh";
+import {navbar } from "./navbar";
+import sidebar from "./sidebar";
+
 
 import footer from "./footer";
+
 import extraSideBar from "./extraSideBar";
 // import { katex } from "@mdit/plugin-katex";
 
@@ -58,6 +57,7 @@ export default defineConfig({
     // ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap' }],
     ],
   permalink: "/:slug",
+
 
   // 监听文件变化，热更新
   extraWatchFiles: [".vuepress/*.ts", ".vuepress/sidebars/*.ts"],
@@ -211,7 +211,8 @@ export default defineConfig({
       '@vuepress/plugin-search',
       {
         // 配置选项
-        searchMaxSuggestions: 10, // 最大搜索建议数量
+        searchMaxSuggestions: 100, // 最大搜索建议数量
+        searchDepth: 6, // 搜索标题的最大深度，h1=1, h2=2
         indexContent: true,
         getExtraFields: (page) => page.frontmatter.tags || [],
       },
@@ -222,27 +223,32 @@ export default defineConfig({
     // ['vue-pdf'],
   ],
   // 主题配置
-  locales: {
-    '/': {
-      lang: 'en-US', // 英文
-      title: '',
-      description: 'Description in English'
-    },
-    '/zh/': {
-      lang: 'zh-CN', // 中文
-      title: '',
-      description: '中文描述'
-    }
-  },
+  // locales: {
+  //   '/': {
+  //     lang: 'en-US', // 英文
+  //     title: '',
+  //     description: ''
+  //   },
+  //   '/zh/': {
+  //     lang: 'zh-CN', // 中文
+  //     title: '',
+  //     description: ''
+  //   }
+  // },
+  lang: 'en-US', // 英文
+  title: "",
+  description: '',
+
   themeConfig: {
     logo: "/logo2.png",
-    // nav: navbar,
-    sidebar: false, // false为禁用首页的侧边栏
+
+    nav: navbar,
+    sidebar,
     lastUpdated: "Last updated",
 
     // GitHub 仓库位置
-    // repo: "liyupi/codefather",
-    // docsBranch: "master",
+    repo: "ciaotomorrow/blog",
+    docsBranch: "main",
 
     // 编辑链接
     // editLinks: true,
@@ -250,33 +256,29 @@ export default defineConfig({
 
     // @ts-ignore
     // 底部版权信息
-    // footer,
+    footer,
     // 额外右侧边栏
-    // extraSideBar,
-    locales: {
-      '/': {
-        selectText: 'Languages',
-        label: 'English',
-        ariaLabel: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
-        lastUpdated: 'Last Updated',
-        nav: navbar_en,
-        sidebar: sidebar_en,
-      },
-      '/zh/': {
-        selectText: '选择语言',
-        label: '简体中文',
-        ariaLabel: '选择语言',
-        editLinkText: '在 GitHub 上编辑此页',
-        lastUpdated: '最后更新',
-        nav: navbar_zh,
-        sidebar: sidebar_zh,
-      }
-    }
+    extraSideBar,
+
+
+    // locales: {
+    //   '/': {
+    //     selectText: 'Languages',
+    //     label: 'English',
+    //     ariaLabel: 'Languages',
+    //     editLinkText: 'Edit this page on GitHub',
+    //     lastUpdated: 'Last Updated',
+        
+    //   },
+    //   '/zh/': {
+    //     selectText: '选择语言',
+    //     label: '简体中文',
+    //     ariaLabel: '选择语言',
+    //     editLinkText: '在 GitHub 上编辑此页',
+    //     lastUpdated: '最后更新',
+    //     nav: navbar_zh,
+    //     sidebar: sidebar_zh,
+    //   }
+    // }
   },
-  // 额外配置
-  // extendMarkdown(md){  // 让md支持数学公式 npm install markdown-it-katex
-  //   md.set({html:true});
-  //   md.use(require('markdown-it-katex'))
-  // }
 });

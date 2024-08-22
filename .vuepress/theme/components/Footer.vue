@@ -7,7 +7,7 @@
             </a>
         </div>
         <div class="copy-right">
-           <span class="name">{{`${currentYear} 2024 Augest &nbsp; |  All rights reserved &nbsp; `}} </span>
+           <span class="name">{{`${currentYear} | All rights reserved &nbsp; `}} </span>
             <a :href="government.href" target="_blank" rel="noreferrer" >
               {{government.name}}
             </a>

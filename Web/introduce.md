@@ -1,5 +1,6 @@
 ---
-title: Introduction
+title: 简介
+lang: zh-CN
 ---
 
 ## 关于个人网站

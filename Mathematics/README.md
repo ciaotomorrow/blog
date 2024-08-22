@@ -2,4 +2,4 @@
 title: Mathematics
 ---
 
-This is the Mathematics topic
+This topic is still fresh, so more content will be available soon...

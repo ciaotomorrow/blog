@@ -1,5 +1,6 @@
 ---
-title: VuePress介绍
+title: VuePress静态网站生成器
+lang: zh-CN
 sidebar: true
 tags:
     - Web
@@ -8,9 +9,9 @@ category:
     - HTML
     - Web
 ---
-# VuePress介绍
+# 目录
+[[toc]]
 ## 快速上手
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在开发一个不太熟悉的内容时，我认为最快的方法是找到一个相关的开源项目并运行它以查看效果。这个方法对于我来说是非常有效的。我使用的开源模板是[<span style="color: DodgerBlue;">template</span>](https://github.com/liyupi/codefather/tree/template). 关于这个模板的部分代码细节和操作过程，点击[<span style="color: DodgerBlue;">视频</span>](https://www.bilibili.com/video/BV1LQ4y1V79r/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=aae6d2f2986fbfc6933d738eccf70b4f)了解更多信息。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于 Vuepress 的个人网站项目一般具有以下的[<span style="color: DodgerBlue;">文件结构</span>](https://www.vuepress.cn/guide/directory-structure.html#%E9%BB%98%E8%AE%A4%E7%9A%84%E9%A1%B5%E9%9D%A2%E8%B7%AF%E7%94%B1)：
@@ -245,7 +246,7 @@ jobs:
 需要在项目展示的图片、PDF文件、音视频文件都需要存放到`./.vuepress/public/`路径下，并且在该路径下文件的索引位置从根目录开始`./`.
 :::
 
-### 多语言模式
+## 多语言模式
 
 启用 VuePress 的多语言支持，首先需要在 `.vuepress/config.js` 中增加 `locales` 选项：
 ``` ts
@@ -310,9 +311,9 @@ export default {
 }
 </script>
 ```
-### 修改主题样式
+## 修改主题样式
 
-#### 修改主题的默认颜色
+### 修改主题的默认颜色
 
 更改主题的默认颜色可以在文件`./.vuepress/styles/paletter.styl`文件中增加以下修改
 
@@ -323,7 +324,7 @@ $borderColor = #eaecef  //默认边框颜色
 $codeBgColor = #282c34  //默认背景颜色
 ```
 
-#### 修改各级标题颜色
+### 修改各级标题颜色
 
 在文件`./.vuepress/styles/index.styl`文件中增加以下修改
 
@@ -349,7 +350,7 @@ $codeBgColor = #282c34  //默认背景颜色
 }
 ```
 
-#### 修改url的颜色
+### 修改url的颜色
 
 在文件`./.vuepress/styles/index.styl`文件中增加以下修改
 
@@ -360,7 +361,7 @@ a {
 }
 ```
 
-#### 修改目录的颜色
+### 修改目录的颜色
 
 在文件`./.vuepress/styles/index.styl`文件中增加以下修改
 
@@ -371,7 +372,7 @@ a {
 }
 ```
 
-#### 修改索引项的悬停颜色
+### 修改索引项的悬停颜色
 
 在文件`./.vuepress/styles/index.styl`文件中增加以下修改
 
@@ -382,7 +383,7 @@ a {
 }
 ```
 
-#### 修改主题的字体大小
+### 修改主题的字体大小
 
 在文件`./.vuepress/styles/index.styl`文件中增加以下修改
 
@@ -419,9 +420,9 @@ p {
 ```
 
 
-### Vue 组件
+## Vue 组件
 
-#### LaTeX插件
+### LaTeX插件
 LaTeX相关的插件有很多，包括`"markdown-it-katex"`, `"vuepress-plugin-latex"`, `"vuepress-plugin-mathjax"`等，这里我使用的是第一个。
 安装该插件并在导入到该项目设置如下。
 ::: details 点击：查看`"markdown-it-katex"`插件安装步骤
@@ -449,7 +450,7 @@ export default defineConfig({
 :::
 
 
-#### LaTeX公式块编号
+### LaTeX公式块编号
 
 虽然插件`"markdown-it-katex"`支持在 Markdown 文件中使用 LaTeX 公式，但是 LeTeX 公式块无法支持编号和引用。因此需要自定义一个渲染 LaTeX 的 Vue 组件。这里我使用`katex`包所集成的渲染方法：
 
@@ -590,10 +591,10 @@ tag="1"/>
 因此，目前采取的方案是在 Markdown 文件中实现简单的 LaTeX 文本。如果需要实现复杂、严谨且高度交叉引用的 LaTeX 文本，建议通过 LaTeX 源码编译成 PDF 文件，然后将其插入到 HTML 中。
 :::
 
-#### Markdown 文本加密
+### Markdown 文本加密
 利用`@oak-tree-house/vuepress-plugin-encrypt`插件，参考博客：[<span style="color: DodgerBlue;">iMaeGoo</span>](https://www.imaegoo.com/2020/vuepress-encrypt/).
 
-##### 1. 安装插件
+#### 1. 安装插件
 使用`npm`安装完该插件后，在`.vuepress/config.ts`文件中更新配置：
 ``` ts
 import { defineConfig } from "vuepress/config";
@@ -614,7 +615,7 @@ export default defineConfig({
 });
 ```
 
-##### 2. 配置密码和加密、解密脚本
+#### 2. 配置密码和加密、解密脚本
 
 所有用于加密文本的密码在`./keys.json`文件配置：允许有多个`user`, 每个`user`允许拥有多个密码关键字（存放于`keys`下）。
 ``` json
@@ -639,7 +640,7 @@ export default defineConfig({
 ```
 在`package.json`文件中，`--source-dir`指定需要加密或解密的文件所在路径，`.`表示根目录。`--key-file`指定放置密码的 json 文件。`--temp`指定用于存放加密和解密过程产生的临时文件路径，这里`.temp-encrypt`表示根目录下的`temp-encrypt`文件夹。如果使用`git`管理文件系统，可以将文件`keys.json`和路径`temp-encrypt`放入`.gitignore`中。
 
-##### 3. 在 Markdown 文件中使用加密容器
+#### 3. 在 Markdown 文件中使用加密容器
 在 Markdown 文件中需要加密的位置，定义一个加密容器，放置需要加密的内容，同时指定密码和用户名。
 ``` md
 ::: encrypt key=passward owners=username
@@ -647,7 +648,7 @@ The content is encrypted.
 :::
 ```
 
-##### 4. 执行加密/解密脚本
+#### 4. 执行加密/解密脚本
 执行加密脚本，对有加密标记的 Markdown 文本位置进行加密：
 ``` sh
 npm run encrypt
@@ -661,9 +662,9 @@ npm run encrypt
 npm run decrypt
 ```
 
-#### 选项卡容器
+### 选项卡容器
 
-##### 1. 定义 vue 组件
+#### 1. 定义 vue 组件
 
 在`.vuepress/components/`路径下定义 Vue 组件 `TabContainer.vue`如下：
 ``` vue
@@ -725,7 +726,7 @@ npm run decrypt
   </style>
 ```
 
-##### 2. 在 Markdown 文件调用组件
+#### 2. 在 Markdown 文件调用组件
 
 ``` md
 <TabContainer :tabs="[

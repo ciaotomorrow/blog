@@ -1,3 +1,4 @@
-# Reading
-
-学而不思则罔
+---
+title: Books
+permalink: /Reading/
+---

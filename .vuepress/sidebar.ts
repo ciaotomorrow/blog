@@ -1,6 +1,6 @@
 import {SidebarConfig4Multiple} from "vuepress/config";
 
-import {Reading, Photography, Web, Mathematics} from "./sidebars/sideBar_en";
+import {Reading, Photography, Web, Mathematics} from "./sidebars/sideBar";
 // @ts-ignore
 export default {
     "/Reading/": Reading,

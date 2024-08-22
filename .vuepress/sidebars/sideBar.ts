@@ -1,15 +1,15 @@
 export const Reading = [
   "",
   {
-    title: "Time Management",
+    title: "Series 1",
     collapsable: true,
     children: [
-      "/Reading/高效能人士的七个习惯.md",
+      // "/Reading/高效能人士的七个习惯.md",
       "/Reading/GTD.md",
     ],
   },
   {
-    title: "Techniques",
+    title: "Test",
     collapsable: true,
     children: [
       "/Reading/如何阅读一本书.md",
@@ -42,7 +42,7 @@ export const Photography = [
 export const Web = [
   "",
   {
-    title: "Web",
+    title: "个人网页开发",
     collapsable:true,
     children:[
       "/Web/introduce.md",
