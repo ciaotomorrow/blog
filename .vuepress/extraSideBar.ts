@@ -57,7 +57,7 @@ export default [
     icon: "/icon/mobile.png",
     popoverTitle: "微信扫一扫",
     popoverUrl:
-      "/cited-images/in_mobile.png",
+      "/blog/cited-images/in_mobile.png",
     popoverDesc: "可以手机查看或分享",
   },
   {
@@ -66,7 +66,7 @@ export default [
     popoverTitle:
       "微信扫一扫添加我为好友",
     popoverUrl:
-      "/cited-images/contact_me.jpg",
+      "/blog/cited-images/contact_me.jpg",
   },
   {
     title: "支持我",
@@ -74,7 +74,7 @@ export default [
     popoverTitle:
       ' <span style="font-size:0.8rem;font-weight:bold;">鼓励和赞赏我</span>',
     popoverUrl:
-      "/cited-images/support_me.jpg",
+      "/blog/cited-images/support_me.jpg",
     popoverDesc:
       "感谢您的支持",
   },
