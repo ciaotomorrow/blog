@@ -124,5 +124,5 @@ dist
 
 /.vuepress/dist/
 
-/keys.json
-/.temp-encrypt
+# /keys.json
+# /.temp-encrypt
