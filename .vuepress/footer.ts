@@ -5,9 +5,9 @@ export default {
   friendLinks: [
     {
       label: "Contact Me",
-      icon: "/icon/user.svg",
+      icon: "/blog/icon/user.svg",
       // href: "https://yuyuanweb.feishu.cn/wiki/Abldw5WkjidySxkKxU2cQdAtnah",
-      href: "/cited-images/contact_me.jpeg",
+      href: "/blog/cited-images/contact_me.jpeg",
     },
     // {
     //   label: "鱼鸢网络",
@@ -26,8 +26,8 @@ export default {
     //   href: "https://yuyuanweb.feishu.cn/wiki/VC1qwmX9diCBK3kidyec74vFnde",
     // },
   ],
-  copyright: {
-    href: "https://beian.miit.gov.cn/",
-    name: "沪ICP备19026706号-6",
-  },
+  // copyright: {
+  //   href: "https://beian.miit.gov.cn/",
+  //   name: "沪ICP备19026706号-6",
+  // },
 };

@@ -50,11 +50,12 @@
 
 
 // modified as follows
-
+// 备注：
+//    1. 引用的图片名称需要加入 base 作为前缀，这里的 base 为 /blog/
 export default [
   {
     title: "手机看",
-    icon: "/icon/mobile.png",
+    icon: "/blog/icon/mobile.png",
     popoverTitle: "微信扫一扫",
     popoverUrl:
       "/blog/cited-images/in_mobile.png",
@@ -62,7 +63,7 @@ export default [
   },
   {
     title: "联系我",
-    icon: "/icon/weixin.png",
+    icon: "/blog/icon/weixin.png",
     popoverTitle:
       "微信扫一扫添加我为好友",
     popoverUrl:
@@ -70,7 +71,7 @@ export default [
   },
   {
     title: "支持我",
-    icon: "/icon/dianzan.png",
+    icon: "/blog/icon/dianzan.png",
     popoverTitle:
       ' <span style="font-size:0.8rem;font-weight:bold;">鼓励和赞赏我</span>',
     popoverUrl:
