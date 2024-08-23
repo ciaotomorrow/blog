@@ -240,7 +240,7 @@ export default defineConfig({
   description: '',
 
   themeConfig: {
-    logo: "/logo2.png",
+    logo: "/blog/logo2.png",
 
     nav: navbar,
     sidebar,

@@ -46,6 +46,8 @@
 </blockquote>
 <!-- <div style="text-align: center;"> <div> -->
 
+::: encrypt key=photo owners=user
+
 ## Landscape
 <figure>
   <img src="/blog/photos/DSC_2950.jpg" alt="Riding a bicycle through the bridge tunnel with the sunrise ahead." title="Riding a bicycle through the bridge tunnel with the sunrise ahead." />
@@ -76,3 +78,5 @@
   <footer style="text-align: right;"> Shot in <a href="https://maps.app.goo.gl/p4CbfpjFc46yAxB56">Xiamen</a> on July 13th, 2024, at 6 PM, by <cite> Wangxx. </cite>
   </footer>
 </blockquote>
+
+:::
