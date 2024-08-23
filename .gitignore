@@ -124,5 +124,6 @@ dist
 
 /.vuepress/dist/
 
+# 注释掉以下两行，keys.json将会上传到 Github，这会使得加密不安全
 # /keys.json
 # /.temp-encrypt
