@@ -10,7 +10,8 @@ export const navbar: NavItem[] = [
             {text: "Reading", link: "/Reading/"},
             {text: "Mathematics", link: '/Mathematics/'},
             {text: "Photography", link: '/Photography/'},
-            {text: "Web", link: '/Web/'}
+            {text: "Web", link: '/Web/'},
+            {text: "无聊", link: '/Thoughts/'},
         ]
     },
     {

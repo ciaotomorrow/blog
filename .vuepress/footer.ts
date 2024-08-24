@@ -26,8 +26,8 @@ export default {
     //   href: "https://yuyuanweb.feishu.cn/wiki/VC1qwmX9diCBK3kidyec74vFnde",
     // },
   ],
-  // copyright: {
-  //   href: "https://beian.miit.gov.cn/",
-  //   name: "沪ICP备19026706号-6",
-  // },
+  copyright: {
+    href: "",
+    name: "",
+  },
 };

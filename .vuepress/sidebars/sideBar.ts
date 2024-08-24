@@ -63,3 +63,14 @@ export const Mathematics = [
     ],
   }
 ]
+
+export const Thoughts = [
+  "",
+  {
+    title: "工作",
+    collapsable: false,
+    children: [
+      "/Thoughts/dimission.md",
+    ]
+  }
+]
